@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "ubuntu-ami-locator": "0.1.1"
+  },
+  "scripts": {
+    "dist": "rm -rf dist && mkdir dist && zip -r dist/amicheck.zip index.js node_modules",
+    "predeploy": "npm run dist",
+    "deploy": "aws lambda update-function-code --function amicheck --zip-file fileb://dist/amicheck.zip --region us-west-2 --publish",
+    "deploy:prd": "aws lambda update-function-code --function amicheck --zip-file fileb://dist/amicheck.zip --region us-east-2 --publish",
+    "test": "../node_modules/.bin/ava test/*.js",
+    "test:lambda": "aws lambda invoke --function-name amicheck --region us-west-2 out.txt",
+    "test:lambda:prd": "aws lambda invoke --function-name amicheck --region us-east-2 out.txt"
+  }
+}

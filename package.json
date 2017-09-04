@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "ava": "0.22.0",
+    "aws-cli": "0.0.1",
+    "standard": "10.0.3"
+  },
+  "scripts": {
+    "standard": "standard",
+    "standard-fix": "standard --fix"
+  }
+}
